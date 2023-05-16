@@ -1,15 +1,9 @@
 
-const express = require('Express');
-const cors = require('cors')
-const morgan = require('morgan')
-const routes = require('./routes')
+const http = require('http')
+const app = require("./controller/app");
+const port = 3001
+const server = http.createServer(app)
 
-const app = express()
-app.use(cors())
-app.use(morgan('dev'))
-app.use('/',routes)
-
-app.listen(3001, ()=>{
-    console.warn('Servidor rodando na porta 3001')
+server.listen(port,()=>{
+    console.warn('Servidor escutando na porta 3001')
 })
-
